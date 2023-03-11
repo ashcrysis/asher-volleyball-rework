@@ -1,0 +1,79 @@
+Convertendo script GML: ${project_dir}\scripts\draw_trail\draw_trail.gml
+Descrição convertida /// @description draw_trail(length,width,color,sprite,slim,alpha)/// @param length
+/// @param width
+/// @param color
+/// @param sprite
+/// @param slim
+/// @param alpha
+
+Convertendo script GML: ${project_dir}\scripts\trail_init\trail_init.gml
+Descrição convertida /// @description trail_init()
+
+Convertendo script GML: ${project_dir}\scripts\draw_trail_ext\draw_trail_ext.gml
+Descrição convertida /// @description draw_trail_ext(Width,Color,Sprite,Slim,Alpha)/// @param Width
+/// @param Color
+/// @param Sprite
+/// @param Slim
+/// @param Alpha
+
+Convertendo script GML: ${project_dir}\scripts\trail_calculate\trail_calculate.gml
+Descrição convertida /// @description trail_calculate(length)/// @param length
+
+Convertendo script GML: ${project_dir}\scripts\trail_destroy\trail_destroy.gml
+Descrição convertida /// @description trail_destroy()
+
+Convertendo script GML: ${project_dir}\objects\obj_trail1\Create_0.gml
+Descrição convertida /// @description Setting the movement variables and the alarm to change them
+
+Convertendo script GML: ${project_dir}\objects\obj_trail1\Alarm_0.gml
+Descrição convertida /// @description Changing the movement variables and restarting the alarm
+
+Convertendo script GML: ${project_dir}\objects\obj_trail1\Other_0.gml
+Descrição convertida /// @description Preventing the object to move outside the room
+
+Convertendo script GML: ${project_dir}\objects\obj_trail1\Draw_0.gml
+Descrição convertida /// @description Drawing the trail
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext1\Create_0.gml
+Descrição convertida /// @description Setting the movement variables and the alarm to change them
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext1\Alarm_0.gml
+Descrição convertida /// @description Changing the movement variables and restarting the alarm
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext1\Other_0.gml
+Descrição convertida /// @description Preventing the object to move outside the room
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext1\Draw_0.gml
+Descrição convertida /// @description Drawing the trail
+
+Convertendo script GML: ${project_dir}\objects\obj_trail2\Create_0.gml
+Descrição convertida /// @description Setting the movement variables and the alarm to change them
+
+Convertendo script GML: ${project_dir}\objects\obj_trail2\Alarm_0.gml
+Descrição convertida /// @description Changing the movement variables and restarting the alarm
+
+Convertendo script GML: ${project_dir}\objects\obj_trail2\Other_0.gml
+Descrição convertida /// @description Preventing the object to move outside the room
+
+Convertendo script GML: ${project_dir}\objects\obj_trail2\Draw_0.gml
+Descrição convertida /// @description Drawing the trail
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext2\Create_0.gml
+Descrição convertida /// @description Setting the movement variables and the alarm to change them
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext2\Alarm_0.gml
+Descrição convertida /// @description Changing the movement variables and restarting the alarm
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext2\Other_0.gml
+Descrição convertida /// @description Preventing the object to move outside the room
+
+Convertendo script GML: ${project_dir}\objects\obj_trail_ext2\Draw_0.gml
+Descrição convertida /// @description Drawing the trail
+
+Convertendo script GML: ${project_dir}\objects\obj_spawner\Mouse_53.gml
+Descrição convertida /// @description On click a random instance of any of the four objects that draw trails on this example will be created
+
+Compatibilidade de script adicionado: instance/instance_create.gml
+Compatibilidade de script adicionado: object/object_get_depth.gml
+Compatibilidade de script adicionado: texture/texture_set_repeat.gml
+Compatibilidade de script adicionado: __global_object_depths.gml

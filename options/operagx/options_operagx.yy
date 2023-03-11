@@ -1,0 +1,18 @@
+{
+  "resourceType": "GMOperaGXOptions",
+  "resourceVersion": "1.0",
+  "name": "operagx",
+  "option_operagx_display_cursor": true,
+  "option_operagx_editUrl": "https://create.gx.games/game/a8a6c550-0723-4005-ae46-ce4097d3a7d5/edit",
+  "option_operagx_game_name": "ASHER VOLLEYBALL - 2 PLAYER ONLY",
+  "option_operagx_guid": "a8a6c550-0723-4005-ae46-ce4097d3a7d5",
+  "option_operagx_internalShareUrl": "https://gx.games/games/yymxco/asher-volleyball-2-player-only/tracks/1157d8ba-e393-4d68-b8d2-707c9e5daf36/",
+  "option_operagx_interpolate_pixels": true,
+  "option_operagx_next_version": "1.0.0.54",
+  "option_operagx_publicShareUrl": "https://gx.games/games/yymxco/asher-volleyball-2-player-only/",
+  "option_operagx_scale": 0,
+  "option_operagx_team_id": "f75bffd7-4f5e-4f46-8c35-dbc3d278c2b8",
+  "option_operagx_team_name": "asherrr studio",
+  "option_operagx_texture_page": "1024x1024",
+  "option_operagx_version": "1.0.0.53",
+}

@@ -1,0 +1,12 @@
+vveloc = 0;
+gravidade = 0.1;
+velocidade =1;
+toque = false;
+hveloc = 0;
+toques = 0;
+controleA = false;
+controle2 = 30;
+chao = false;
+controle3 = 0;
+controleT = 0;
+pulo = 1;
