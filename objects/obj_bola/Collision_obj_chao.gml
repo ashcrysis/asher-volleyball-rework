@@ -15,6 +15,13 @@ hveloc = 0;
 
 if pulo == 1 {
 vveloc -= 2 ;
+pulo = 0.5;
+effect_create_above(ef_ring, x, y, 0, c_white);
+audio_play_sound(hit4,1,false);
+}
+
+if pulo == 0.5 {
+vveloc -= 1.2 ;
 pulo = 0;
 effect_create_above(ef_ring, x, y, 0, c_white);
 audio_play_sound(hit4,1,false);

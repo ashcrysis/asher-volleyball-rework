@@ -22,5 +22,6 @@ rollback_define_player(obj_player, "player");
 
 if (!rollback_join_game()){
 
-     rollback_create_game(1,true);
+     rollback_create_game(1, true);
+	
 }

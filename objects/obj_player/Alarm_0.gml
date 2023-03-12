@@ -1,1 +1,1 @@
-controle = false;
+self.controle = false;

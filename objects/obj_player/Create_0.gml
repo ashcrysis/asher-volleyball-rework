@@ -25,3 +25,7 @@ bolas = 0;
 forca = 25;  
 block = false;
 dir = "Direita";
+maxestamina = 100;
+stamina = maxestamina;
+
+rede.depth = -3000;

@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Sprite60",
-    "path": "sprites/Sprite60/Sprite60.yy",
+    "name": "block_b",
+    "path": "sprites/block_b/block_b.yy",
   },
   "spriteMaskId": null,
   "visible": false,

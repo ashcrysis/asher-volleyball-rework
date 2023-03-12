@@ -37,10 +37,6 @@ function scr_player_andando(){
 //movimentação
 
 
-
-
-
-
 self.hveloc = (_input.direita - _input.esquerda)  ;
 
 if !place_meeting(x,y + 1,obj_parede){
@@ -49,40 +45,56 @@ self.vveloc += gravidade;
 
 	if _input.space_pressed{
 	
-	vveloc = -12.8;
-
-	}
-}
-
-
-if hveloc != 0 or vveloc != 0
-{
-self.veloc = 5.5;
-}
-
-else {
-	self.veloc = 0;
-	
-	}
-	
+	self.vveloc = -12.8;
 	if _input.shift{
-	if controle == false{
- self.veloc = 9;
- self.image_speed = 2;
+		if self.stamina > 10{
+	self.vveloc = -13.8;}
 	}
- }else {
- 
+	}
+}
+
+
+if self.hveloc != 0 or self.vveloc != 0 
+{
+
+	if _input.shift {
+		if self.stamina > 0{
+			self.animacao = 7;
+			self.stamina -= 1;
+	if self.controle == false{
+ self.veloc = 10;
+ self.image_speed = 1;
+
+	}
+		}
+  }else {
+	self.veloc = 5.5
+	 
+
+}
+
+
+}
+
+ if self.hveloc == 0 and self.vveloc == 0{
+	 
+ if self.stamina < self.maxestamina
+ {
+	 self.stamina += 0.5;
+ }
+ }
  self.image_speed = 1;
  
- }
-	
+ 
+if self.animacao == 2 and _input.fire_pressed{
 
+self.animacao = 3;
 
-
+}
 
 scr_personagem_colisao()
 
-if block == false and _input.fire_pressed and !place_meeting(x,y + 1,obj_parede){
+if self.block == false and _input.fire_pressed and !place_meeting(x,y + 1,obj_parede){
 	if self.dir == "Direita"{
 if self.controle == false{
 self.animacao = 3;
@@ -91,7 +103,7 @@ obj_hitbox_spike.forca = self.forca;
 }
 	}else if self.dir == "Esquerda"{
 	if self.controle == false{
-animacao = 3;
+self.animacao = 3;
 instance_create_layer(x-20,y-120,"player",obj_hitbox_spike_left)
 obj_hitbox_spike_left.forca = self.forca;
 }
@@ -127,7 +139,7 @@ obj_hitbox_bump.velocidade = self.forca;
 }
 	}else if self.dir == "Esquerda"{
 	if self.controle == false{
-animacao = 4;
+self.animacao = 4;
 instance_create_layer(x,y,"player",obj_hitbox_bump_left)
 obj_hitbox_bump_left.velocidade = self.forca;
 }
@@ -148,7 +160,7 @@ obj_hitbox_bump.velocidade = self.forca;
 }
 	}else if self.dir == "Esquerda"{
 	if self.controle == false{
-animacao = 5;
+self.animacao = 5;
 instance_create_layer(x,y-65,"player",obj_hitbox_bump_left)
 obj_hitbox_bump_left.velocidade = self.forca;
 }
@@ -160,11 +172,12 @@ obj_hitbox_bump_left.velocidade = self.forca;
 
 
 if _input.B_pressed {
-if block == false{block = true;}else{ block = false;}
+if self.block == false{self.block = true;}else{ self.block = false;}
 
 }
 
-if block == true && _input.fire_pressed && !place_meeting(x,y + 1,obj_parede){
+
+if self.block == true && _input.fire_pressed && !place_meeting(x,y + 1,obj_parede){
 if self.dir == "Esquerda"{
 if self.controle == false{
 self.animacao = 6;
@@ -185,6 +198,7 @@ self.controle = true;
 
 
 }
+
 
 
 function player_spawn(){
@@ -212,12 +226,36 @@ function input_handler()
 {
 
 var _input = rollback_get_input();
-if _input.esquerda or _input.direita
+if _input.esquerda or _input.direita and !_input.shift
 {
 	if place_meeting(x,y+2,obj_parede) {
-	animacao = 1;
+	self.animacao = 1;
 	}
+
+
+} 
+
+if _input.shift and !_input.fire and self.hveloc != 0 and self.vveloc == 0 and !_input.F_pressed
+{
+	self.animacao = 7;
 }
+
+if _input.shift and self.animacao == 7 and !place_meeting(x,y+10,obj_parede)  {
+
+	self.animacao = 2;//
+}
+
+if self.animacao == 2 and place_meeting(x,y+5,obj_parede){
+
+if self.hveloc == 0 {
+self.animacao = 0;
+}
+if self.hveloc != 0 {
+self.animacao = 1;
+}
+
+}
+
 
 depth = -y;
 
@@ -241,14 +279,18 @@ case "Esquerda":
 	}
 }
 
-if hveloc == 0 and vveloc == 0 and !_input.fire and animacao != 5 {
-animacao = 0;
-controle = false;
+if self.hveloc == 0 and self.vveloc == 0 and !_input.fire and self.animacao != 5 {
+self.animacao = 0;
+self.controle = false;
 }
+
+
 if _input.space_pressed{
 	audio_play_sound(naruto_jump_sound_effect,1,false);
-animacao = 2;
+self.animacao = 2;
 } 
+
+
 
 if _input.Q_pressed {
 
@@ -261,6 +303,8 @@ if self.forca < 15{
 	}
 }
 
+
+
 if _input.E_pressed {
 
 	self.forca += 5;
@@ -270,13 +314,14 @@ if self.forca >45{
 	self.forca = 15;
 	
 	}
+
 }
 
 if _input.G_pressed {
 
 if (instance_number(obj_bola) <1){
 	
-instance_create_layer(x,y-520,"player",obj_bola);
+instance_create_layer(self.x,self.y-520,"player",obj_bola);
 }
 
 }
@@ -297,11 +342,10 @@ self.dir = "Esquerda";
 }
 
 function animation_handler(){
+if player_name == "asherrr"
+{
 
-switch player_id{
-	
-	case 0:
-			switch self.dir{
+switch self.dir{
 				case "Direita":
 			switch self.animacao {
 
@@ -325,6 +369,9 @@ switch player_id{
 			break;
 			case 6:
 				self.sprite_index = block_p;
+			break;
+			case 7:
+			self.sprite_index = run;
 			break;
 
 				}
@@ -353,7 +400,76 @@ switch player_id{
 			case 6:
 				self.sprite_index = block_pleft;
 			break;
+			case 7:
+			self.sprite_index = run_left_;
+			break;
 
+
+				}
+
+}
+}else{
+switch player_id{
+	
+	case 0:
+			switch self.dir{
+				case "Direita":
+			switch self.animacao {
+
+			case 0:
+				self.sprite_index = idle;
+			break;
+			case 1:
+				self.sprite_index = walk;
+			break;
+			case 2:
+				self.sprite_index = jump;
+			break;
+			case 3:
+				self.sprite_index = spike;
+			break;
+			case 4:
+				self.sprite_index = rec;
+			break;
+			case 5:
+				self.sprite_index = set;
+			break;
+			case 6:
+				self.sprite_index = block_p;
+			break;
+			case 7:
+				self.sprite_index = run;
+			break;
+
+				}
+					break;
+				case "Esquerda":
+				switch self.animacao {
+
+			case 0:
+				self.sprite_index = idle_left;
+			break;
+			case 1:
+				self.sprite_index = walk_left;
+			break;
+			case 2:
+				self.sprite_index = jump_left;
+			break;
+			case 3:
+				self.sprite_index = spike_left;
+			break;
+			case 4:
+				self.sprite_index = rec_left;
+			break;
+			case 5:
+				self.sprite_index = set_left;
+			break;
+			case 6:
+				self.sprite_index = block_pleft;
+			break;
+			case 7:
+				self.sprite_index = run_left_;
+			break;
 
 				}
 			 	break;
@@ -366,27 +482,30 @@ switch self.dir{
 	case "Direita":
 switch self.animacao {
 
-case 0:
-	self.sprite_index = idle_3;
-break;
-case 1:
-	self.sprite_index = walk_2;
-break;
-case 2:
-	self.sprite_index = jump_2;
-break;
-case 3:
-	self.sprite_index = spike_2;
-break;
-case 4:
-	self.sprite_index = rec_2;
-break;
-case 5:
-	self.sprite_index = set256;
-break;
-case 6:
-	self.sprite_index = block2;
-break;
+			case 0:
+				self.sprite_index = idle_1;
+			break;
+			case 1:
+				self.sprite_index = walk_1;
+			break;
+			case 2:
+				self.sprite_index = jump_1;
+			break;
+			case 3:
+				self.sprite_index = spike_1;
+			break;
+			case 4:
+				self.sprite_index = rec_1;
+			break;
+			case 5:
+				self.sprite_index = set_1;
+			break;
+			case 6:
+				self.sprite_index = block_1;
+			break;
+			case 7:
+				self.sprite_index = run_1;
+			break;
 
 
 	}
@@ -395,26 +514,29 @@ break;
 	switch self.animacao {
 
 case 0:
-	self.sprite_index = idle_2_left;
-break;
-case 1:
-	self.sprite_index = walk_2_left;
-break;
-case 2:
-	self.sprite_index = jump_2_left;
-break;
-case 3:
-	self.sprite_index = spike_2_left;
-break;
-case 4:
-	self.sprite_index = rec_2_left;
-break;
-case 5:
-	self.sprite_index = set2_left;
-break;
-case 6:
-	self.sprite_index = block2_pleft;
-break;
+				self.sprite_index = idle_1_left;
+			break;
+			case 1:
+				self.sprite_index = walk_1_left;
+			break;
+			case 2:
+				self.sprite_index = jump_1_left;
+			break;
+			case 3:
+				self.sprite_index = spike_1_left;
+			break;
+			case 4:
+				self.sprite_index = rec_1_left;
+			break;
+			case 5:
+				self.sprite_index = set_1_left;
+			break;
+			case 6:
+				self.sprite_index = block_1_left;
+			break;
+			case 7:
+				self.sprite_index = run_1_left;
+			break;
 
 	}
  	break;
@@ -446,6 +568,9 @@ break;
 			break;
 			case 6:
 				self.sprite_index = block_p;
+			case 7:
+				self.sprite_index = run;
+			break;
 			break;
 			break;
 
@@ -475,6 +600,9 @@ break;
 			case 6:
 				self.sprite_index = block_pleft;
 			break;
+			case 7:
+			self.sprite_index = run_left_;
+			break;
 
 				}
 			 	break;
@@ -482,16 +610,17 @@ break;
 
 	break;
 }
+}
 
-
-if animacao == 3 and fim_da_animacao(){
-animacao = 2;
+if self.animacao == 3 and fim_da_animacao(){
+self.animacao = 2;
 
 }
 
-if animacao == 5 and fim_da_animacao(){
-animacao = 2;
+if self.animacao == 5 and fim_da_animacao(){
+self.animacao = 2;
 }
+
 
 
 

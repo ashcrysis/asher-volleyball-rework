@@ -6,6 +6,7 @@ vveloc += gravidade;
 y += vveloc;
 
 
+
 if place_meeting(x,y + vveloc   ,obj_parede)
 	{
 		while !place_meeting(x, y + sign(vveloc), obj_parede){
